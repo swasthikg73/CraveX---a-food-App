@@ -1,0 +1,58 @@
+import React, { useContext, useState } from "react";
+import "./Navbar.css";
+import { assets } from "../../assets/assets";
+import { Link } from "react-router-dom";
+import { StoreContext } from "../../context/StoreContext";
+
+const Navbar = ({ SetShowLogin }) => {
+  const [menu, setMenu] = useState("home");
+  const { getTotalAmt } = useContext(StoreContext);
+
+  return (
+    <div className="navbar">
+      <Link to="">
+        <img src={assets.logo} alt="logo" className="logo" />{" "}
+      </Link>
+      <ul className="navbar-menu">
+        <Link to={"/"}>
+          <li
+            onClick={() => setMenu("home")}
+            className={menu === "home" ? "active" : ""}>
+            Home
+          </li>
+        </Link>
+        <a
+          href="#explore-menu"
+          onClick={() => setMenu("menu")}
+          className={menu === "menu" ? "active" : ""}>
+          Menu
+        </a>
+        <a
+          href="#app-download"
+          onClick={() => setMenu("mobile-app")}
+          className={menu === "mobile-app" ? "active" : ""}>
+          Mobile-App
+        </a>{" "}
+        <a
+          onClick={() => setMenu("contact-us")}
+          className={menu === "contact-us" ? "active" : ""}>
+          Contact Us
+        </a>
+      </ul>
+      <div className="navbar-right">
+        <img src={assets.search_icon} alt="search" />
+        <Link to="/cart">
+          <div className="navbar-search-icon">
+            <img src={assets.basket_icon} alt="" />
+
+            <div className={getTotalAmt() === 0 ? "" : "dot"}></div>
+          </div>
+        </Link>
+
+        <button onClick={() => SetShowLogin(true)}>Sign In</button>
+      </div>
+    </div>
+  );
+};
+
+export default Navbar;
