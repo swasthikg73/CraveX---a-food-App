@@ -31,3 +31,29 @@ a {
     opacity: 1;
   }
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track (background) */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Thumb (scroll handle) */
+::-webkit-scrollbar-thumb {
+  background: tomato;
+  /* your color */
+  border-radius: 10px;
+}
+
+/* Thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #e85d00;
+}
+
+*::selection {
+  background-color: #f1f1f1;
+  color: tomato;
+}
