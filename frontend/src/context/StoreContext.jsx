@@ -13,7 +13,15 @@ const StoreContextProvider = (props) => {
   //featch good list
   const fetchFoodLists = async () => {
     const response = await axios.get(url + "/api/food/list");
-    setFoodList(response.data.data);
+    setFoodList(response.data?.data);
+  };
+
+  // fetch Cart Details
+  const fetchCartItems = async (token) => {
+    const response = await axios.get(url + "/api/cart/list", {
+      headers: { token },
+    });
+    setCartItems(response.data.cartData);
   };
 
   //get token from localStorage
@@ -22,6 +30,7 @@ const StoreContextProvider = (props) => {
       await fetchFoodLists();
       if (localStorage.getItem("tokenCraveX")) {
         setToken(localStorage.getItem("tokenCraveX"));
+        await fetchCartItems(localStorage.getItem("tokenCraveX"));
       }
     }
     loadData();
@@ -29,11 +38,18 @@ const StoreContextProvider = (props) => {
 
   //Cart Count handler
   const addToCart = async (itemId) => {
-    await axios
-      .post(url + "/api/cart/add", itemId, { headers: token })
-      .then((res) => {
-        console.log(res);
-      });
+    if (token) {
+      try {
+        const res = await axios.post(
+          url + "/api/cart/add",
+          { itemId },
+          { headers: { token } }
+        );
+        await fetchCartItems(token);
+      } catch (error) {
+        console.log(error);
+      }
+    }
 
     // if (!cartItems[itemId]) {
     //   setCartItems((prev) => ({ ...prev, [itemId]: 1 }));
@@ -43,8 +59,15 @@ const StoreContextProvider = (props) => {
   };
 
   //remove from cart
-  const removefromCart = (itemId) => {
-    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
+  const removefromCart = async (itemId) => {
+    if (token)
+      await axios
+        .put(url + "/api/cart/remove", { itemId }, { headers: { token } })
+        .then(async (res) => {
+          await fetchCartItems(token);
+        });
+
+    // setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
   };
 
   const getTotalAmt = () => {

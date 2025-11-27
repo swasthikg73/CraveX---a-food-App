@@ -6,6 +6,7 @@ import userRoute from "./routes/userRoute.js";
 import "dotenv/config";
 import cartRoute from "./routes/cartRoute.js";
 import authMiddleware from "./middleware/auth.js";
+import orderRoute from "./routes/orderRoute.js";
 
 authMiddleware;
 //ap config
@@ -25,6 +26,7 @@ app.use("/images", express.static("uploads"));
 app.use("/api/food", foodRouter);
 app.use("/api/user", userRoute);
 app.use("/api/cart", authMiddleware, cartRoute);
+app.use("/api/order", authMiddleware, orderRoute);
 
 app.get("/", (req, res) => {
   res.send("App launched");

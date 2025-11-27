@@ -7,25 +7,19 @@ const Cart = () => {
   const { cartItems, food_list, removefromCart, getTotalAmt, url } =
     useContext(StoreContext);
   const navigate = useNavigate();
+  console.log("Cart Items ", cartItems["692693a927f515152a11f416"]);
 
   return (
     <div className="cart">
       <div className="cart-items">
         <div className="cart-items-title">
-          {Object.keys(cartItems).length > 0 ? (
-            <>
-              <p>Items</p>
-              <p>Title</p>
-              <p>Price</p>
-              <p>Quantity</p>
-              <p>Total</p>
-              <p>Remove</p>
-            </>
-          ) : (
-            <p className="cart-empty-text">Your cart is empty...!</p>
-          )}
+          <p>Items</p>
+          <p>Title</p>
+          <p>Price</p>
+          <p>Quantity</p>
+          <p>Total</p>
+          <p>Remove</p>
         </div>
-        <hr />
         {food_list.map((item, index) => {
           if (cartItems[item._id] > 0) {
             return (

@@ -6,11 +6,6 @@ import fs from "fs";
 const addFood = async (req, res) => {
   const body = req.body;
   const image_filename = `${req.file.filename}`;
-
-  //const image_filename = `wertyhtr`;
-
-  //console.log(req.image);
-
   const food = new foodModel({
     name: body.name,
     description: body.description,

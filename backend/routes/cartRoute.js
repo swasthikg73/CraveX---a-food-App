@@ -8,6 +8,6 @@ const cartRoute = express.Router();
 
 cartRoute.post("/add", addToCart);
 cartRoute.put("/remove", removeFromCart);
-cartRoute.get("/getCartData", getCartData);
+cartRoute.get("/list", getCartData);
 
 export default cartRoute;
