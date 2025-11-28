@@ -8,6 +8,7 @@ import Footer from "./components/Footer/Footer";
 import AppDownload from "./components/AppDownloads/AppDownload";
 import { useState } from "react";
 import LoginPopup from "./components/LoginPopUp/LoginPopup";
+import Verify from "./pages/Verify/verify";
 
 function App() {
   const [showLogin, SetShowLogin] = useState(false);
@@ -21,6 +22,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/place-order" element={<PlaceOrder />} />
+          <Route path="/verify" element={<Verify />} />
         </Routes>
       </div>
       <AppDownload />
