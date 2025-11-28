@@ -7,8 +7,6 @@ const Cart = () => {
   const { cartItems, food_list, removefromCart, getTotalAmt, url } =
     useContext(StoreContext);
   const navigate = useNavigate();
-  console.log("Cart Items ", cartItems["692693a927f515152a11f416"]);
-
   return (
     <div className="cart">
       <div className="cart-items">
