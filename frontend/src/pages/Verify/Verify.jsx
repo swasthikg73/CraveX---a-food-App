@@ -23,8 +23,12 @@ const Verify = () => {
     );
 
     if (response.data.success) {
+      //  console.log("Success");
+
       navigate("/myOrders");
     } else {
+      // console.log("Failure");
+
       navigate("/");
     }
   };
@@ -32,9 +36,8 @@ const Verify = () => {
   useEffect(() => {
     if (token) {
       verifyPayment();
-      console.log("Token : ", token);
     }
-  }, []);
+  }, [token]);
 
   return (
     <div className="verify">
