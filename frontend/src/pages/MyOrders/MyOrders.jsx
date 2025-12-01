@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./MyOrders.css";
 import { StoreContext } from "../../context/StoreContext";
+import { assets } from "../../assets/assets.js";
 
 import axios from "axios";
 
@@ -27,7 +28,27 @@ const MyOrders = () => {
     }
   }, [token]);
 
-  return <div>My Orders</div>;
+  return (
+    <div className="my-orders">
+      <h2>My Orders</h2>
+      <div className="container">
+        {data.map((order, index) => {
+          return (
+            <div ley={index} className="my-orders-order">
+              <img src={assets.parcel_icon} alt="" />
+              <p>
+                {order.items.map((item, index) => {
+                  if (index === order.items.length - 1) {
+                    return item.name + " X " + item.quantity;
+                  }
+                })}
+              </p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
 };
 
 export default MyOrders;
