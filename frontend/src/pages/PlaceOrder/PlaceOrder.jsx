@@ -3,6 +3,7 @@ import "./PlaceOrder.css";
 import { StoreContext } from "../../context/StoreContext";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const PlaceOrder = () => {
   const { getTotalAmt, token, food_list, cartItems, url } =
@@ -53,6 +54,15 @@ const PlaceOrder = () => {
       toast.error("Error");
     }
   };
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!token) {
+      navigate("/cart");
+    } else if (getTotalAmt() === 0) {
+      navigate("/cart");
+    }
+  }, []);
 
   return (
     <div>

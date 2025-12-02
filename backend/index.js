@@ -26,7 +26,7 @@ app.use("/images", express.static("uploads"));
 app.use("/api/food", foodRouter);
 app.use("/api/user", userRoute);
 app.use("/api/cart", authMiddleware, cartRoute);
-app.use("/api/order", authMiddleware, orderRoute);
+app.use("/api/order", orderRoute);
 
 app.get("/", (req, res) => {
   res.send("App launched");

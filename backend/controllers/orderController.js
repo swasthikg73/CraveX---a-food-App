@@ -86,4 +86,12 @@ const userOrders = async (req, res) => {
   }
 };
 
-export { placeOrder, verifyOrder, userOrders };
+//LIst order for Page
+
+const listOrders = async (req, res) => {
+  try {
+    const orders = await orderModel.findAll();
+  } catch (error) {}
+};
+
+export { placeOrder, verifyOrder, userOrders, listOrders };
