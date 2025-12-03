@@ -10,16 +10,19 @@ function App() {
   const url = "http://localhost:4000";
   return (
     <>
-      <div>
+      <div className="app">
         <Navbar />
-        <hr />
-        <div className="app-content">
+
+        <div className="app-body">
           <Sidebar />
-          <Routes>
-            <Route path="/add" element={<Add url={url} />} />
-            <Route path="/list" element={<List url={url} />} />
-            <Route path="/orders" element={<Orders url={url} />} />
-          </Routes>
+
+          <div className="app-content">
+            <Routes>
+              <Route path="/add" element={<Add url={url} />} />
+              <Route path="/list" element={<List url={url} />} />
+              <Route path="/orders" element={<Orders url={url} />} />
+            </Routes>
+          </div>
         </div>
       </div>
     </>
