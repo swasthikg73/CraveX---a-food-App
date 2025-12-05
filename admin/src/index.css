@@ -13,6 +13,7 @@ body {
   background-color: #fcfcfc;
 }
 
+
 a {
   text-decoration: none;
   color: inherit;
@@ -23,6 +24,7 @@ hr {
   height: 1px;
   background-color: #a9a9a9;
 }
+
 
 .app-content {
   display: flex;
