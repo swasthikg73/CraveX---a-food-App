@@ -11,3 +11,11 @@
     width: 150px;
     height: 100px;
 }
+
+@media (max-width:1200px) {
+    .list-table-format {
+        grid-template-columns: 1fr 2fr 1fr;
+        gap: 20px;
+        margin-top: 5px;
+    }
+}
