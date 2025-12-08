@@ -8,7 +8,7 @@ import Footer from "./components/Footer/Footer";
 import AppDownload from "./components/AppDownloads/AppDownload";
 import { useState } from "react";
 import LoginPopup from "./components/LoginPopUp/LoginPopup";
-import Verify from "./pages/Verify/verify";
+import Verify from "./pages/Verify/Verify";
 import MyOrders from "./pages/MyOrders/MyOrders";
 
 function App() {
