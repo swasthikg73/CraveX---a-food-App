@@ -11,7 +11,7 @@ import orderRoute from "./routes/orderRoute.js";
 authMiddleware;
 //ap config
 const app = express();
-const port = process.env.port || 4000;
+const port = process.env.PORT || 4000;
 
 //middleware
 app.use(express.json());
