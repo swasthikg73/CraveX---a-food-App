@@ -7,10 +7,10 @@ const Footer = () => {
     <div className="footer" id="footer">
       <div className="footer-content">
         <div className="footer-content-left">
-          <img src={assets.logo} alt="" />
+          <img src={assets.logo2} alt="" />
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            Dignissimos recusandae provident necessitatibus! Illo, provident.
+            Delicious food from your favorite places, Delivered with love by
+            CraveX.
           </p>
 
           <div className="footer-social-icons">
@@ -28,11 +28,11 @@ const Footer = () => {
             <li>Privacy policy</li>
           </ul>
         </div>
-        <div className="footer-content-right">
+        <div className="footer-content-right" id="contact">
           <h2>GET IN TOUCH</h2>
           <ul>
             <li>+9178965222</li>
-            <li>contact@tomato.com</li>
+            <li>contact@CraveX.com</li>
           </ul>
         </div>
       </div>
