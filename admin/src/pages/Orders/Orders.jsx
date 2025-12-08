@@ -9,10 +9,10 @@ import { assets } from "../../assets/assets";
 const Orders = ({ url }) => {
   const [orders, setOrders] = useState([]);
 
-  const fetchAllOrders = async () => {
-    const res = await axios.get(url + "/api/order/list");
-    // console.log(res.data.data);
-
+  const getOrders = async (value) => {
+    if (!value) {
+    }
+    const res = await axios.get(url + "/api/order/list?status=" + value);
     if (res.data.success) {
       setOrders(res.data.data);
     } else {
@@ -21,13 +21,44 @@ const Orders = ({ url }) => {
     }
   };
   useEffect(() => {
-    fetchAllOrders();
+    getOrders("");
   }, []);
+
+  const statusHandler = async (event, orderId) => {
+    const res = await axios.post(url + "/api/order/update-status", {
+      orderId: orderId,
+      status: event.target.value,
+    });
+
+    if (res.data.success) {
+      toast.success(res.data.message);
+    } else toast.error(res.data.message);
+    getOrders("");
+  };
+
   return (
     <>
       <ToastContainer />
       <div className="order add">
-        <h3>Order Page</h3>
+        <div className="heading-filter">
+          <h3>Order Page</h3>
+          <div className="filter">
+            <p>Apply filter : </p>
+            <select
+              onChange={(e) => getOrders(e.target.value)}
+              className="filter-dropdown"
+              name=""
+              id="">
+              <option value="" default>
+                All
+              </option>
+              <option value="Food Processing">Food Processing</option>
+              <option value="Out for Delivery">Out for delivery</option>
+              <option value="Delivery">Delivery</option>
+            </select>
+          </div>
+        </div>
+
         <div className="order-list">
           {orders.map((order, index) => (
             <div key={index} className="order-item">
@@ -60,9 +91,15 @@ const Orders = ({ url }) => {
               </div>
               <p>Items : {order.items.length}</p>
               <p>${order.amount}</p>
-              <select name="" id="">
-                <option value="food Processing">Food Processing</option>
-                <option value="Out for delivery">Out for Delivery</option>
+              <select
+                name=""
+                id=""
+                onChange={(event) => {
+                  statusHandler(event, order._id);
+                }}
+                value={order.status}>
+                <option value="Food Processing">Food Processing</option>
+                <option value="Out for Delivery">Out for Delivery</option>
                 <option value="Delivery">Delivery</option>
               </select>
             </div>
