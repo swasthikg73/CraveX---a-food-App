@@ -5,7 +5,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
 const Add = () => {
-  const url = "http://localhost:4000";
+  const url = "https://cravex-a-food-app-backend.onrender.com";
 
   const [image, setImage] = useState(false);
   const [data, setData] = useState({
