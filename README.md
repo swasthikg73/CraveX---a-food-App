@@ -1,3 +1,3 @@
-Customer URL- cravex-a-food-app.onrender.com
+Customer URL- https://cravex-a-food-app.onrender.com
 
 Admin URL - https://cravex-admin.onrender.com
