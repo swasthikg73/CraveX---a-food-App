@@ -36,6 +36,3 @@ Backend
 3. MongoDB
 4. JWT Authentication
 
-Hosting
-1. Render (Frontend & Backend)
-2. MongoDB Atlas (Database)
