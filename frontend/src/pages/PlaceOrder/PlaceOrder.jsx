@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./PlaceOrder.css";
 import { StoreContext } from "../../context/StoreContext";
-import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import axiosPrivate from "../../api/axios";
 
 const PlaceOrder = () => {
   const { getTotalAmt, token, food_list, cartItems, url } =
@@ -44,9 +44,7 @@ const PlaceOrder = () => {
       amount: getTotalAmt() + 2,
     };
 
-    let response = await axios.post(url + "/api/order/place", orderData, {
-      headers: { token },
-    });
+    let response = await axiosPrivate.post(url + "/api/order/place", orderData);
     if (response.data.success) {
       const { session_url } = response.data;
       window.location.replace(session_url);

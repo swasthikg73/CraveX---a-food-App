@@ -1,18 +1,16 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./MyOrders.css";
 import { StoreContext } from "../../context/StoreContext";
 import { assets } from "../../assets/assets.js";
 
-import axios from "axios";
+import axiosPrivate from "../../api/axios.js";
 
 const MyOrders = () => {
   const [data, setData] = useState([]);
-  const { url, token } = useContext(StoreContext);
+  const { token } = useContext(StoreContext);
 
   const fetchOrders = async () => {
-    const res = await axios.get(url + "/api/order/userOrders", {
-      headers: { token },
-    });
+    const res = await axiosPrivate.get("/api/order/userOrders");
 
     if (res.data.success) {
       setData(res.data.data);
