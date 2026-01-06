@@ -1,3 +1,4 @@
+import { log } from "console";
 import foodModel from "../models/foodModels.js";
 import fs from "fs";
 
@@ -25,6 +26,7 @@ const addFood = async (req, res) => {
 
 //get All Foods
 const listFood = async (req, res) => {
+  log("Listing foods");
   try {
     const foods = await foodModel.find({});
     res.json({ success: true, data: foods });

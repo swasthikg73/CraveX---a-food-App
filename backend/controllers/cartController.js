@@ -6,6 +6,9 @@ const addToCart = async (req, res) => {
   try {
     let userData = await userModel.findOne({ _id: req.user.id });
     let cartData = await userData.cartData;
+
+    console.log(userData, cartData);
+
     //If already no product is present in the user cart
     if (!cartData[req.body.itemId]) {
       cartData[req.body.itemId] = 1;

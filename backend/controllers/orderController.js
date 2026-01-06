@@ -74,8 +74,12 @@ const verifyOrder = async (req, res) => {
 };
 
 const userOrders = async (req, res) => {
+  console.log("User Orders : ");
+
   try {
     const orders = await orderModel.find({ userId: req.user.id });
+    console.log("Orders : ", orders);
+
     res.json({ success: true, data: orders });
   } catch (error) {
     console.log(error);
