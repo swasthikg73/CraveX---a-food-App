@@ -39,3 +39,4 @@ Backend
 Hosting
 1. Render (Frontend & Backend)
 2. MongoDB Atlas (Database)
+
