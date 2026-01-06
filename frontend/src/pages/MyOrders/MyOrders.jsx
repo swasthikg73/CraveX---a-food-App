@@ -16,7 +16,7 @@ const MyOrders = () => {
       setData(res.data.data);
       console.log(res.data.data);
     } else {
-      console.log("Eror");
+      console.log("Error");
     }
   };
 
