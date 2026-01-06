@@ -3,24 +3,21 @@ import "./Verify.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { StoreContext } from "../../context/StoreContext";
 import axios from "axios";
+import axiosPrivate from "../../api/axios";
 
 const Verify = () => {
   const [searchParams, setSearchPArams] = useSearchParams();
   const success = searchParams.get("success");
   const orderId = searchParams.get("orderId");
-  const { url, token } = useContext(StoreContext);
+  const { token } = useContext(StoreContext);
 
   const navigate = useNavigate();
 
   const verifyPayment = async () => {
-    const response = await axios.post(
-      url + "/api/order/verify",
-      {
-        success,
-        orderId,
-      },
-      { headers: { token } }
-    );
+    const response = await axiosPrivate.post("/api/order/verify", {
+      success,
+      orderId,
+    });
 
     if (response.data.success) {
       //  console.log("Success");
